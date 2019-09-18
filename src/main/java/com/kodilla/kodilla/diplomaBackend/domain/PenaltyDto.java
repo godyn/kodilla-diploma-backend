@@ -1,12 +1,7 @@
 package com.kodilla.kodilla.diplomaBackend.domain;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
 import java.math.BigDecimal;
 
-@NoArgsConstructor
-@Getter
 public class PenaltyDto {
 
     private long id;
@@ -59,5 +54,28 @@ public class PenaltyDto {
         this.details = details;
         this.toBePaid = toBePaid;
         this.rentDto = rentDto;
+    }
+
+    public PenaltyDto() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public PenaltyReason getReason() {
+        return reason;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public BigDecimal getToBePaid() {
+        return toBePaid;
+    }
+
+    public RentDto getRentDto() {
+        return rentDto;
     }
 }

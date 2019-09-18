@@ -4,6 +4,6 @@ public enum PenaltyReason {
 
     DEFECT,
     DAMAGE,
-    UNPUNCTUAL_RETURN,
-    NOT_FULL_TANK
+    UNPUNCTUALRETURN,
+    NOTFULLTANK
 }

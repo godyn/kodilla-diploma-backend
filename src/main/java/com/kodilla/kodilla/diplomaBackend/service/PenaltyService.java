@@ -19,13 +19,10 @@ public class PenaltyService {
     @Autowired
     LogHistoryService logHistoryService;
 
-    public Penalty applyPenalty(Penalty penalty){
-        chargePenalty(penalty);
+    public Penalty chargePenalty(Penalty penalty){
+        rentService.applyPenalty(penalty);
         logHistoryService.saveLog(penalty.getRent().getUser(), "Penalty for: " + penalty.getReason());
         return penaltyRepository.save(penalty);
     }
 
-    public void chargePenalty(Penalty penalty){
-        penalty.getRent().getToBePaid().add(penalty.getToBePaid());
-    }
 }

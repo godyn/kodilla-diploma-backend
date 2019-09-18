@@ -1,27 +1,18 @@
 package com.kodilla.kodilla.diplomaBackend.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name="CATEGORIES")
 public class Category {
 
     @Column(name="ID", unique = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @NotNull
+    //@NotNull
     @Id
     private long id;
 
@@ -41,6 +32,54 @@ public class Category {
             mappedBy = "category")
     private List<Car> listOfCars = new ArrayList<>();
 
+    public Category(long id, String name, String details, BigDecimal pricePerDay, List<Car> listOfCars) {
+        this.id=id;
+        this.name = name;
+        this.details = details;
+        this.pricePerDay = pricePerDay;
+        this.listOfCars = listOfCars;
+    }
 
+    public Category() {
+    }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public BigDecimal getPricePerDay() {
+        return pricePerDay;
+    }
+
+    public void setPricePerDay(BigDecimal pricePerDay) {
+        this.pricePerDay = pricePerDay;
+    }
+
+    public List<Car> getListOfCars() {
+        return listOfCars;
+    }
+
+    public void setListOfCars(List<Car> listOfCars) {
+        this.listOfCars = listOfCars;
+    }
 }

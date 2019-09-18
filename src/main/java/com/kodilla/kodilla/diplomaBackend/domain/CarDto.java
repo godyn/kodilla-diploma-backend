@@ -1,14 +1,8 @@
 package com.kodilla.kodilla.diplomaBackend.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
 import java.math.BigDecimal;
 import java.util.List;
 
-@Getter
-@NoArgsConstructor
 public class CarDto {
 
     private long id;
@@ -85,5 +79,40 @@ public class CarDto {
         this.seatsQuantity = seatsQuantity;
         this.category = category;
         this.listOfRents = listOfRents;
+    }
+
+    public CarDto() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public String getProductionYear() {
+        return productionYear;
+    }
+
+    public BigDecimal getVehicleMileage() {
+        return vehicleMileage;
+    }
+
+    public int getDoorQuantity() {
+        return doorQuantity;
+    }
+
+    public int getSeatsQuantity() {
+        return seatsQuantity;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public List<RentDto> getListOfRents() {
+        return listOfRents;
     }
 }

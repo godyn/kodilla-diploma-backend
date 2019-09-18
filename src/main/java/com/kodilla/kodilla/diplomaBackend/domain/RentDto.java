@@ -1,15 +1,10 @@
 package com.kodilla.kodilla.diplomaBackend.domain;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@NoArgsConstructor
 public class RentDto {
 
     private long id;
@@ -116,5 +111,52 @@ public class RentDto {
         this.listOfPenalties = new ArrayList<>(listOfPenalties);
         this.toBePaid = toBePaid;
         this.status = status;
+    }
+
+    public RentDto() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public UserDto getUser() {
+        return user;
+    }
+
+    public CarDto getCarRented() {
+        return carRented;
+    }
+
+    public LocalDate getStartDay() {
+        return startDay;
+    }
+
+    public LocalDate getEndDay() {
+        return endDay;
+    }
+
+    public long getFuelLevel() {
+        return fuelLevel;
+    }
+
+    public boolean isWithInsurance() {
+        return withInsurance;
+    }
+
+    public boolean isWithExtraCarTrunk() {
+        return withExtraCarTrunk;
+    }
+
+    public List<Penalty> getListOfPenalties() {
+        return listOfPenalties;
+    }
+
+    public BigDecimal getToBePaid() {
+        return toBePaid;
+    }
+
+    public RentStatus getStatus() {
+        return status;
     }
 }

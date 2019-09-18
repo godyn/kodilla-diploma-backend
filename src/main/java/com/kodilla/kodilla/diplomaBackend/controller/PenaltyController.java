@@ -23,6 +23,6 @@ public class PenaltyController {
     //ADMIN ONLY
     @PostMapping(name="/penalty", consumes = APPLICATION_JSON_VALUE )
     public void declarePenalty(@RequestBody PenaltyDto penaltyDto){
-        penaltyService.applyPenalty(penaltyMapper.mapToPenalty(penaltyDto));
+        penaltyService.chargePenalty(penaltyMapper.mapToPenalty(penaltyDto));
     }
 }

@@ -1,21 +1,11 @@
 package com.kodilla.kodilla.diplomaBackend.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @NamedNativeQuery(
         name="Car.searchCarInDateRange",
         query = "SELECT * FROM CARS C WHERE " +
@@ -33,7 +23,7 @@ public class Car {
 
     @Column(unique = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @NotNull
+    //@NotNull
     @Id
     private long id;
 
@@ -63,4 +53,81 @@ public class Car {
             fetch = FetchType.LAZY)
     List<Rent> listOfRents=new ArrayList<>();
 
+    public Car(long id, String model, String productionYear, BigDecimal vehicleMileage, int doorQuantity, int seatsQuantity, Category category, List<Rent> listOfRents) {
+        this.id=id;
+        this.model = model;
+        this.productionYear = productionYear;
+        this.vehicleMileage = vehicleMileage;
+        this.doorQuantity = doorQuantity;
+        this.seatsQuantity = seatsQuantity;
+        this.category = category;
+        this.listOfRents = listOfRents;
+    }
+
+    public Car() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getProductionYear() {
+        return productionYear;
+    }
+
+    public void setProductionYear(String productionYear) {
+        this.productionYear = productionYear;
+    }
+
+    public BigDecimal getVehicleMileage() {
+        return vehicleMileage;
+    }
+
+    public void setVehicleMileage(BigDecimal vehicleMileage) {
+        this.vehicleMileage = vehicleMileage;
+    }
+
+    public int getDoorQuantity() {
+        return doorQuantity;
+    }
+
+    public void setDoorQuantity(int doorQuantity) {
+        this.doorQuantity = doorQuantity;
+    }
+
+    public int getSeatsQuantity() {
+        return seatsQuantity;
+    }
+
+    public void setSeatsQuantity(int seatsQuantity) {
+        this.seatsQuantity = seatsQuantity;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public List<Rent> getListOfRents() {
+        return listOfRents;
+    }
+
+    public void setListOfRents(List<Rent> listOfRents) {
+        this.listOfRents = listOfRents;
+    }
 }

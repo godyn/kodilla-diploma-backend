@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "calendar-car-rental-253112",
+  "private_key_id": "dbfc1f5fd6019ad0a4de322a26519921c0ed52a8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDlfn63Z28P2JAm\nw8cKH0lIbsJmFmKJF+gcakYiTzvlm9xsqdHD6R/FH2tzYhUcZZYc31lhzuIG/efv\nPO0D41qrrZmoK4xkohLnzhgk5PcP8yib3zrF4dO0blxq7wDkIa7hTKMshEixs/Fh\n6LROOAVBkcrCqlvBfQN//XBq4gKe4dROlaZQr5y96Wzn6zfOlu/VTPGSvsgHKU+4\nFqrpJzEypdyRDNZhy3IDxuUrm+QFssChRXv57p6UNFOnyNTqXoXAdWd6rguu2sof\nOnI2qxzMxC0TgUF6BVsYWuCFpM6B6pwE4zlaZW4oSbKhurgREo8jEle4e4IDyFca\nUH0PveYpAgMBAAECggEASBKv7R14zbsvml0F13H3692NA86n53IwnSvrFr9Xikam\ntSGoFSTTq26wqi31f1OQD0U9pu/4IEYBXyr9LKlsQlpk1WHH15rm4RHil0OpK8Mr\nz7gNlzPS7ulx8Mtatkq1x1/wJvzsb5KZjiws5BvH2s3Upcomwt9mB/4qHgcY15hw\ndIZyRikrxGBtL2kNumZmFAoby2OUjKifitPVt1Ppa2U2WQpPDH7KqbSerw3h6TZ5\nmH/NxDGqkir9B9oJ7hoNuHagKIjdAMHaseLYNOXCs0kHMKyqd0evav6K0wph9Yz6\n2Sj/DqbcjWMy6YXTC+QtMwLeh7CIOO7JsWj2S4MSeQKBgQD3Ki+Ok/QCOHoH90Nf\nzCO+nyR1E54Gk8ntxaXr4JoGGBVYTsQBDrbGbQCiCQYGfnrjFS3OCR1LnHNZXA5g\ng0rwCkelKzM4b5vh2df8cAyywbYFJxmQxMUITH/scTTPF2F8NZOG8F/tWYy2BYwk\nCyKa5U8A3pIoAwIGYty6dduLzwKBgQDtspqyHF0M6D2ZCFwOmDPaCkybxajUJ499\nkPvMARfeRSUBW5NJT9Lu5cPYLAGkOZM5rRxNmHb9S+pIMoP6jsdqmExZUaGc32Mu\n+N8WlAVuYiy/ZdO85eHV1c5krJ1PPpFgzzBZr3oCAs6YZnC91+0ayNHSpxORQm9d\nkzl0SQUUhwKBgGIrQURSA4K2R9HOJdZw0Gmv790Ic6WNIZDtBd/QD50IB8JRVoxM\n+c+KD8xL5TbDGbAEA3NoL1iOxUnixFsVCriYfKhfpjJuMe3chmrfXkvJoLAfPYpA\nfTm0mMKinCT81l1tMjFQW+l7veW2All2isIW/fAMduSpfS5oKd9tXEwFAoGBAOE9\nO6XHhs0yTRx0dXdG9uuIkuuRM9hF3IzqFBBOgOWYs+ZDdqAjygejJh/0I2IRRNeE\nmKtW7Ho9s7XSWInXPlReGQsSdYiHjh72qb9laHgfA7Qis6/uTkApKDjx8OckrPIF\noxV5WK4LJuX3PKJIuF+HKHzq4XnmcE1Fs03j27KFAoGAS44bu1XWw3bNL6SjyXGD\n3gsz2vcTLee2aXLX6rc/GNjs8L6iWEVzfCjHj+/Bd+XWmljibiNz+EuRT8D91Vzr\na82yBKRXbXubvfyuP0jjNt4KPJ4qYk5kUsb+YGJMspMvfJ2Z3tW5tpndEyz1V3vv\n6HfbT4oCTlZ3fM9+PrwOMVM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "rent-storage@calendar-car-rental-253112.iam.gserviceaccount.com",
+  "client_id": "107564248084793179425",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/rent-storage%40calendar-car-rental-253112.iam.gserviceaccount.com"
+}

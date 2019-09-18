@@ -1,19 +1,9 @@
 package com.kodilla.kodilla.diplomaBackend.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name="LOGS_HISTORY")
 public class LogHistory {
@@ -33,4 +23,45 @@ public class LogHistory {
 
     @Column(name="LOG_MESSAGE")
     private String logMessage;
+
+    public LogHistory(User user, Timestamp timeStamp, String logMessage) {
+        this.user = user;
+        this.timeStamp = timeStamp;
+        this.logMessage = logMessage;
+    }
+
+    public LogHistory() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Timestamp getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(Timestamp timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    public String getLogMessage() {
+        return logMessage;
+    }
+
+    public void setLogMessage(String logMessage) {
+        this.logMessage = logMessage;
+    }
 }

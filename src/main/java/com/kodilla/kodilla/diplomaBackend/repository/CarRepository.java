@@ -1,7 +1,6 @@
 package com.kodilla.kodilla.diplomaBackend.repository;
 
 import com.kodilla.kodilla.diplomaBackend.domain.Car;
-import com.kodilla.kodilla.diplomaBackend.domain.Category;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

@@ -1,9 +1,6 @@
 package com.kodilla.kodilla.diplomaBackend.service;
 
-import com.kodilla.kodilla.diplomaBackend.domain.LogHistory;
-import com.kodilla.kodilla.diplomaBackend.domain.Rent;
-import com.kodilla.kodilla.diplomaBackend.domain.RentStatus;
-import com.kodilla.kodilla.diplomaBackend.domain.User;
+import com.kodilla.kodilla.diplomaBackend.domain.*;
 import com.kodilla.kodilla.diplomaBackend.repository.LogHistoryRepository;
 import com.kodilla.kodilla.diplomaBackend.repository.RentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +47,11 @@ public class RentService {
         rent.setStatus(RentStatus.FINISHED);
         logHistoryService.saveLog(rent.getUser(), "Car (" + rent.getCarRented().getId() + ") return");
         return rentRepository.save(rent);
+    }
+
+    public Rent applyPenalty(Penalty penalty){
+        penalty.getRent().getToBePaid().add(penalty.getToBePaid());
+        return rentRepository.save(penalty.getRent());
     }
 
     public List<Rent> fetchUserRents(User user){
