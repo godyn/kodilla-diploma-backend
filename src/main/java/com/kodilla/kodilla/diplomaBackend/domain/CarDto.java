@@ -11,7 +11,7 @@ public class CarDto {
     private BigDecimal vehicleMileage;
     private int doorQuantity;
     private int seatsQuantity;
-    private Category category;
+    private CategoryDto categoryDto;
     List<RentDto> listOfRents;
 
     public static class CarDtoBuilder{
@@ -22,7 +22,7 @@ public class CarDto {
         private BigDecimal vehicleMileage;
         private int doorQuantity;
         private int seatsQuantity;
-        private Category category;
+        private CategoryDto categoryDto;
         List<RentDto> listOfRents;
 
         public CarDtoBuilder id(long id){
@@ -55,8 +55,8 @@ public class CarDto {
             return this;
         }
 
-        public CarDtoBuilder category(Category category){
-            this.category=category;
+        public CarDtoBuilder categoryDto(CategoryDto categoryDto){
+            this.categoryDto=categoryDto;
             return this;
         }
 
@@ -66,18 +66,18 @@ public class CarDto {
         }
 
         public CarDto build(){
-            return new CarDto(id, model, productionYear, vehicleMileage, doorQuantity, seatsQuantity, category, listOfRents);
+            return new CarDto(id, model, productionYear, vehicleMileage, doorQuantity, seatsQuantity, categoryDto, listOfRents);
         }
     }
 
-    private CarDto(long id, String model, String productionYear, BigDecimal vehicleMileage, int doorQuantity, int seatsQuantity, Category category, List<RentDto> listOfRents) {
+    private CarDto(long id, String model, String productionYear, BigDecimal vehicleMileage, int doorQuantity, int seatsQuantity, CategoryDto categoryDto, List<RentDto> listOfRents) {
         this.id = id;
         this.model = model;
         this.productionYear = productionYear;
         this.vehicleMileage = vehicleMileage;
         this.doorQuantity = doorQuantity;
         this.seatsQuantity = seatsQuantity;
-        this.category = category;
+        this.categoryDto = categoryDto;
         this.listOfRents = listOfRents;
     }
 
@@ -108,8 +108,8 @@ public class CarDto {
         return seatsQuantity;
     }
 
-    public Category getCategory() {
-        return category;
+    public CategoryDto getCategory() {
+        return categoryDto;
     }
 
     public List<RentDto> getListOfRents() {

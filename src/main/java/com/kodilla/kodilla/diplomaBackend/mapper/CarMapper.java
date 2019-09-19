@@ -14,6 +14,9 @@ public class CarMapper {
     @Autowired
     RentMapper rentMapper;
 
+    @Autowired
+    CategoryMapper categoryMapper;
+
     public CarDto mapToCarDto(Car car){
         return new CarDto.CarDtoBuilder()
                 .id(car.getId())
@@ -22,7 +25,7 @@ public class CarMapper {
                 .vehicleMileage(car.getVehicleMileage())
                 .doorQuantity(car.getDoorQuantity())
                 .seatsQuantity(car.getSeatsQuantity())
-                .category(car.getCategory())
+                .categoryDto(categoryMapper.mapToCategoryDto(car.getCategory()))
                 .listOfRents(rentMapper.mapToRentDtoList(car.getListOfRents()))
                 .build();
     }
@@ -30,7 +33,7 @@ public class CarMapper {
     public Car mapToCar(CarDto carDto){
         return new Car(carDto.getId(), carDto.getModel(), carDto.getProductionYear(),
                 carDto.getVehicleMileage(), carDto.getDoorQuantity(), carDto.getSeatsQuantity(),
-                carDto.getCategory(), rentMapper.mapToRentList(carDto.getListOfRents()));
+                categoryMapper.mapToCategory(carDto.getCategory()), rentMapper.mapToRentList(carDto.getListOfRents()));
     }
 
     public List<CarDto> mapToCarDtoList(List<Car> cars){

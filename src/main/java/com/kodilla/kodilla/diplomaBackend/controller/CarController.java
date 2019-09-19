@@ -14,7 +14,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(name="/v1")
+@RequestMapping("/v1")
 public class CarController {
 
     @Autowired
@@ -26,22 +26,22 @@ public class CarController {
     @Autowired
     LogHistoryService logHistoryService;
 
-    @GetMapping(name="/cars")
+    @GetMapping(value="/cars")
     public List<CarDto> searchCars(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate, @RequestParam String category){
         return carMapper.mapToCarDtoList(carService.searchCar(startDate, endDate, category));
     }
 
-    @PostMapping(name="/car", consumes = APPLICATION_JSON_VALUE)
+    @PostMapping(value="/car", consumes = APPLICATION_JSON_VALUE)
     public void addNewCar(@RequestBody CarDto carDto){
         carService.addCar(carMapper.mapToCar(carDto));
     }
 
-    @DeleteMapping(name="/car")
+    @DeleteMapping(value="/car")
     public void deleteCar(@RequestBody CarDto carDto){
         carService.deleteCar(carMapper.mapToCar(carDto));
     }
 
-    @PutMapping(name="/car", consumes = APPLICATION_JSON_VALUE)
+    @PutMapping(value="/car", consumes = APPLICATION_JSON_VALUE)
     public CarDto updateCarData(@RequestBody CarDto carDto){
         return carMapper.mapToCarDto(carService.updateCar(carMapper.mapToCar(carDto)));
     }

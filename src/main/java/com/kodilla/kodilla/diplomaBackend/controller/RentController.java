@@ -14,7 +14,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(name="/v1/rent")
+@RequestMapping("/v1/rent")
 public class RentController {
 
     @Autowired
@@ -23,31 +23,31 @@ public class RentController {
     @Autowired
     RentMapper rentMapper;
 
-    @PostMapping(name="/book", consumes = APPLICATION_JSON_VALUE)
+    @PostMapping(value="/book", consumes = APPLICATION_JSON_VALUE)
     public void booking(@RequestBody RentDto rentDto){
         rentService.makeReservation(rentMapper.mapToRent(rentDto));
 
     }
 
-    @PutMapping(name="/cancel", consumes = APPLICATION_JSON_VALUE)
+    @PutMapping(value="/cancel", consumes = APPLICATION_JSON_VALUE)
     public void cancellingBook(@RequestBody RentDto rentDto){
         rentService.cancelReservation(rentMapper.mapToRent(rentDto));
 
     }
 
-    @PutMapping(name="/confirm", consumes = APPLICATION_JSON_VALUE)
+    @PutMapping(value="/confirm", consumes = APPLICATION_JSON_VALUE)
     public void rent(@RequestBody RentDto rentDto){
         rentService.confirmRent(rentMapper.mapToRent(rentDto));
 
     }
 
-    @PutMapping(name="/return", consumes = APPLICATION_JSON_VALUE)
+    @PutMapping(value="/return", consumes = APPLICATION_JSON_VALUE)
     public void returnCar(@RequestBody RentDto rentDto){
         rentService.confirmReturn(rentMapper.mapToRent(rentDto));
 
     }
 
-    @GetMapping(name="/history")
+    @GetMapping(value="/history")
     public List<RentDto> getRents(@RequestBody User user){
         return rentMapper.mapToRentDtoList(rentService.fetchUserRents(user));
     }
