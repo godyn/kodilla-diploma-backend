@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class CarService {
@@ -30,7 +31,7 @@ public class CarService {
             Category category = categoryService.getCategory(categoryName);
             return carRepository.searchCarInDateRange(startDay, endDay, category.getId());
         }
-        catch(CategoryNotFoundException e){
+        catch(NoSuchElementException e){
             return new ArrayList<>();
         }                                   /////---------> SPRAWDZ
     }

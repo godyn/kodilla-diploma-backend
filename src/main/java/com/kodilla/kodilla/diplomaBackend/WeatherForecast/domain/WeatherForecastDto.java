@@ -1,7 +1,9 @@
-package com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain.forecast;
+package com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain.ForecastData;
+import com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain.Location;
 
 import java.util.List;
 

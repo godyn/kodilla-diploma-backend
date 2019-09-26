@@ -1,13 +1,9 @@
-package com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain.forecast;
+package com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain.current.Clouds;
-import com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain.current.Rain;
-import com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain.current.Snow;
-import com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain.current.WeatherDescription;
-import com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain.current.WeatherMetrics;
-import com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain.current.Wind;
+
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ForecastData {
@@ -16,13 +12,13 @@ public class ForecastData {
     private WeatherMetrics weatherMetrics;
 
     @JsonProperty("weather")
-    private WeatherDescription weatherDescription;
+    private List<WeatherDescription> weatherDescriptionList;
 
     @JsonProperty("clouds")
-    private com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain.current.Clouds clouds;
+    private Clouds clouds;
 
     @JsonProperty("wind")
-    private com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain.current.Wind windSpeed;
+    private Wind windSpeed;
 
     @JsonProperty("rain")
     private Rain rainLevel;
@@ -36,9 +32,9 @@ public class ForecastData {
     public ForecastData() {
     }
 
-    public ForecastData(WeatherMetrics weatherMetrics, WeatherDescription weatherDescription, Clouds clouds, Wind windSpeed, Rain rainLevel, Snow snow, String dateTime) {
+    public ForecastData(WeatherMetrics weatherMetrics, List<WeatherDescription> weatherDescriptionList, Clouds clouds, Wind windSpeed, Rain rainLevel, Snow snow, String dateTime) {
         this.weatherMetrics = weatherMetrics;
-        this.weatherDescription = weatherDescription;
+        this.weatherDescriptionList = weatherDescriptionList;
         this.clouds = clouds;
         this.windSpeed = windSpeed;
         this.rainLevel = rainLevel;
@@ -54,12 +50,12 @@ public class ForecastData {
         this.weatherMetrics = weatherMetrics;
     }
 
-    public WeatherDescription getWeatherDescription() {
-        return weatherDescription;
+    public List<WeatherDescription> getWeatherDescriptionList() {
+        return weatherDescriptionList;
     }
 
-    public void setWeatherDescription(WeatherDescription weatherDescription) {
-        this.weatherDescription = weatherDescription;
+    public void setWeatherDescriptionList(List<WeatherDescription> weatherDescriptionList) {
+        this.weatherDescriptionList = weatherDescriptionList;
     }
 
     public Clouds getClouds() {

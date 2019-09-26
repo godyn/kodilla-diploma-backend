@@ -24,6 +24,7 @@ import com.google.api.services.calendar.model.Event;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
 import java.util.List;
+import com.google.api.services.calendar.model.Events;
 
 
 @Component
@@ -32,7 +33,7 @@ public class CalendarClient {
     private static final String APPLICATION_NAME = "Car Rental Calendar API";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static final List<String> SCOPES = Collections.singletonList(CalendarScopes.CALENDAR);
-    private static final String CREDENTIALS_FILE_PATH = "resources/credentials.json";
+    private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
 
     private static final String CALENDAR_ID = "4ueb78lf25kffagn6h89q98e9g@group.calendar.google.com";
@@ -47,10 +48,10 @@ public class CalendarClient {
     }
 
 
-    public void createRentEvent(Rent rent) {
+    public String createRentEvent(Rent rent) {
 
         Event event = new Event()
-                .setSummary(rent.getCarRented().getCategory() + ": " + rent.getCarRented())
+                .setSummary(rent.getCarRented().getCategory().getName() + ": " + rent.getCarRented().getModel())
                 .setDescription("Rent for: " + rent.getUser().getFirstname() + " " + rent.getUser().getLastname());
 
         DateTime startDate = new DateTime(rent.getStartDay().toString());
@@ -61,7 +62,7 @@ public class CalendarClient {
 
         DateTime endDateTime = new DateTime(rent.getEndDay().toString());
         EventDateTime end = new EventDateTime()
-                .setDateTime(endDateTime)
+                .setDate(endDateTime)
                 .setTimeZone("Europe/Warsaw");
         event.setEnd(end);
 
@@ -70,9 +71,52 @@ public class CalendarClient {
             event = service.events().insert(CALENDAR_ID, event).execute();
         }
         catch(Exception e){
+            System.out.println("Creating Service exception messeage: " + e.getMessage() +", exception cause: "+ e.getCause());
         }
 
         System.out.printf("Event created: %s\n", event.getHtmlLink());
+        return event.getHtmlLink() +"\n" + "eventId: " + event.getId();
+    }
+
+    public List<Event> list10nextEvents(){
+        DateTime now = new DateTime(System.currentTimeMillis());
+        //DateTime now = new Date(System.currentTimeMillis());
+        try {
+            Calendar service = buildAuthorizedClientService();
+            Events events = service.events().list(CALENDAR_ID)
+                    .setMaxResults(10)
+                    .setTimeMin(now)
+                    .setOrderBy("startTime")
+                    .setSingleEvents(true)
+                    .execute();
+            List<Event> items = events.getItems();
+            if (items.isEmpty()) {
+                System.out.println("No upcoming events found.");
+            } else {
+                System.out.println("Upcoming events");
+                for (Event event : items) {
+                    DateTime start = event.getStart().getDateTime();
+                    if (start == null) {
+                        start = event.getStart().getDate();
+                    }
+                    System.out.printf("%s (%s)\n", event.getSummary(), start);
+                }}
+            return items;
+        }
+        catch(Exception e){
+            System.out.println("Creating Service exception messeage: " + e.getMessage() +", exception cause: "+ e.getCause());
+            return null;
+        }
+    }
+
+    public void deleteRentEvent(String eventId){
+        try {
+            Calendar service = buildAuthorizedClientService();
+            //Calendar.Events.Delete event = service.events().delete(CALENDAR_ID, eventId);
+            service.events().delete(CALENDAR_ID, eventId);
+        }catch(Exception e){
+            System.out.println("Creating Service exception messeage: " + e.getMessage() +", exception cause: "+ e.getCause());
+        }
     }
 
     private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
@@ -93,44 +137,4 @@ public class CalendarClient {
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
 
-
-
-
-    /** Authorizes the installed application to access user's protected data. */
-    /*
-    private static Credential authorize() throws Exception {
-        // load client secrets
-        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
-                new InputStreamReader(CalendarSample.class.getResourceAsStream("/client_secrets.json")));
-        // set up authorization code flow
-        GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
-                httpTransport, JSON_FACTORY, clientSecrets,
-                Collections.singleton(CalendarScopes.CALENDAR)).setDataStoreFactory(dataStoreFactory)
-                .build();
-        // authorize
-        return new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
-    }
-    */
-
-    /*
-        public static void main(String... args) throws IOException, GeneralSecurityException {
-            // Build a new authorized API client service.
-            final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-            Calendar service = new Calendar.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-                    .setApplicationName(APPLICATION_NAME)
-                    .build();
-    */
-        /*
-        URI url = UriComponentsBuilder.fromHttpUrl(googleCalendarEndpoint + "/calendars/calendarId/events")
-                .queryParam("fields", "start, end, summary")
-                
-                .build()
-                .encode()
-                .toUri();
-
-
-       return EventDto createdEvent= restTemplate.postForObject(url, null, EventDto.class);
-
-
-        */
 }

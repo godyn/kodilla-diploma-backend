@@ -1,77 +1,56 @@
 package com.kodilla.kodilla.diplomaBackend.WeatherForecast.client;
 
-import com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain.current.CurrentWeatherDto;
-import com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain.forecast.WeatherForecastDto;
+import com.kodilla.kodilla.diplomaBackend.WeatherForecast.config.WeatherConfig;
+import com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain.CurrentWeatherDto;
+import com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain.WeatherForecastDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 
-public class WeatherForecastClient {
+@Component
+public class WeatherClient {
 
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${openweathermap.api.endpoint.prod}")
-    private String weatherAppEndpoint;
+    @Autowired
+    private WeatherConfig weatherConfig;
 
-    @Value("${openweathermap.app.key}")
-    private String weatherAppKey;
+    private static final Logger LOGGER = LoggerFactory.getLogger(WeatherClient.class);
+
 
     public CurrentWeatherDto currentWeather(String cityName, String countryCode){
-
-        URI url = UriComponentsBuilder.fromHttpUrl(weatherAppEndpoint + "/data/2.5/weather")
-                .queryParam("q", cityName, countryCode)
-                .queryParam("units", "metric")
-                .queryParam("lang", "pl")
-                .queryParam("APPID", weatherAppKey)
-                .build()
-                .encode()
-                .toUri();
-        return restTemplate.getForObject(url, CurrentWeatherDto.class);
+        try {
+            CurrentWeatherDto result = restTemplate.getForObject(getUrl(cityName, countryCode, weatherConfig.CURR_ENDPOINT), CurrentWeatherDto.class);
+            return result;
+        }catch(RestClientException e){
+            LOGGER.error(e.getMessage(), e);
+            return new CurrentWeatherDto();
+        }
     }
 
     public WeatherForecastDto weatherForecast(String cityName, String countryCode){
-
-        URI url = UriComponentsBuilder.fromHttpUrl(weatherAppEndpoint + "/data/2.5/forecast")
-                .queryParam("q", cityName, countryCode)
-                .queryParam("units", "metric")
-                .queryParam("lang", "pl")
-                .queryParam("APPID", weatherAppKey)
-                .build()
-                .encode()
-                .toUri();
-        return restTemplate.getForObject(url, WeatherForecastDto.class);
+        return restTemplate.getForObject(getUrl(cityName, countryCode, weatherConfig.FORECAST_ENDPOINT), WeatherForecastDto.class);
     }
 
 
-    private URI getUrl(String cityName, String countryCode, String type){
-        String endpointType = "";
-        switch(type){
-            case "current": endpointType = "/data/2.5/weather";
-            case "forecast": endpointType="/data/2.5/forecast";
-            
-        }
+    private URI getUrl(String cityName, String countryCode, String endpoint){
 
-
-        if(type.equals("current")) {
-            endpointType = "/data/2.5/weather";
-        }
-        if(type.equals("forecast")){
-            endpointType="/data/2.5/forecast";
-        }
-
-        URI url = UriComponentsBuilder.fromHttpUrl(weatherAppEndpoint + endpointType)
+         URI url = UriComponentsBuilder.fromHttpUrl(weatherConfig.getWeatherAppEndpoint() + endpoint)
                 .queryParam("q", cityName, countryCode)
                 .queryParam("units", "metric")
                 .queryParam("lang", "pl")
-                .queryParam("APPID", weatherAppKey)
+                .queryParam("APPID", weatherConfig.getWeatherAppKey())
                 .build()
                 .encode()
                 .toUri();
+
+         return url;
     }
-
-
 }

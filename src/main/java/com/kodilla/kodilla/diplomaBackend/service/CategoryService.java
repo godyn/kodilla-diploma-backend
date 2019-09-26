@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 @Service
 public class CategoryService {
@@ -20,8 +20,8 @@ public class CategoryService {
     @Autowired
     UserService userService;
 
-    public Category getCategory(String name) throws CategoryNotFoundException{
-        return categoryRepository.findByName(name).orElseThrow(CategoryNotFoundException::new);
+    public Category getCategory(String name) throws NoSuchElementException {
+        return categoryRepository.findByName(name).orElseThrow(NoSuchElementException::new);
     }
 
     public List<Category> getCategories(){

@@ -1,4 +1,4 @@
-package com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain.current;
+package com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -7,20 +7,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Snow {
 
     @JsonProperty("3h")
-    private float rain;
+    private float snow;
 
     public Snow(float rain) {
-        this.rain = rain;
+        this.snow = rain;
     }
 
     public Snow() {
     }
 
-    public float getRain() {
-        return rain;
+    public float getSnow() {
+        return snow;
     }
 
-    public void setRain(float rain) {
-        this.rain = rain;
+    public void setSnow(float snow) {
+        this.snow = snow;
     }
 }

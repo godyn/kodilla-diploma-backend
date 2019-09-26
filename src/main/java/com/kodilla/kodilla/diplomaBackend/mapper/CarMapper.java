@@ -33,7 +33,7 @@ public class CarMapper {
     public Car mapToCar(CarDto carDto){
         return new Car(carDto.getId(), carDto.getModel(), carDto.getProductionYear(),
                 carDto.getVehicleMileage(), carDto.getDoorQuantity(), carDto.getSeatsQuantity(),
-                categoryMapper.mapToCategory(carDto.getCategory()), rentMapper.mapToRentList(carDto.getListOfRents()));
+                categoryMapper.mapToCategory(carDto.getCategoryDto()), rentMapper.mapToRentList(carDto.getListOfRents()));
     }
 
     public List<CarDto> mapToCarDtoList(List<Car> cars){

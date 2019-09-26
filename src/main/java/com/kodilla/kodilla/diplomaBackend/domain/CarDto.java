@@ -108,7 +108,7 @@ public class CarDto {
         return seatsQuantity;
     }
 
-    public CategoryDto getCategory() {
+    public CategoryDto getCategoryDto() {
         return categoryDto;
     }
 

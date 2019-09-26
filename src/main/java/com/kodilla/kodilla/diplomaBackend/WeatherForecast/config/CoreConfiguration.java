@@ -1,4 +1,4 @@
-package com.kodilla.kodilla.diplomaBackend.GoogleCalendar.config;
+package com.kodilla.kodilla.diplomaBackend.WeatherForecast.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

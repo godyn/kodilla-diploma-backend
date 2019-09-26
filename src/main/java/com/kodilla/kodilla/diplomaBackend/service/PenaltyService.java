@@ -7,6 +7,8 @@ import com.kodilla.kodilla.diplomaBackend.repository.PenaltyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
+
 @Service
 public class PenaltyService {
 
@@ -23,6 +25,13 @@ public class PenaltyService {
         rentService.applyPenalty(penalty);
         logHistoryService.saveLog(penalty.getRent().getUser(), "Penalty for: " + penalty.getReason());
         return penaltyRepository.save(penalty);
+    }
+
+    public void cancelPenalty(long id) throws NoSuchElementException{
+        Penalty penalty = penaltyRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        rentService.recallPenalty(penalty);
+        logHistoryService.saveLog(penalty.getRent().getUser(), "Penalty cancellation - id: " + id);
+        penaltyRepository.deleteById(id);
     }
 
 }

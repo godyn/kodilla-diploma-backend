@@ -11,9 +11,42 @@ public class CategoryDto {
     private BigDecimal pricePerDay;
     private List<CarDto> listOfCarsDto;
 
-    public long getId() {
-        return id;
+    public static class CategoryDtoBuilder{
+        private long id;
+        private String name;
+        private String details;
+        private BigDecimal pricePerDay;
+        private List<CarDto> listOfCarsDto;
+
+        public CategoryDtoBuilder id(long id){
+            this.id=id;
+            return this;
+        }
+        public CategoryDtoBuilder name(String name){
+            this.name=name;
+            return this;
+        }
+        public CategoryDtoBuilder details(String details){
+            this.details=details;
+            return this;
+        }
+
+        public CategoryDtoBuilder pricePerDay(BigDecimal pricePerDay){
+            this.pricePerDay=pricePerDay;
+            return this;
+        }
+
+        public CategoryDtoBuilder listOfCarsDto(List<CarDto> listOfCarsDto){
+            this.listOfCarsDto=listOfCarsDto;
+            return this;
+        }
+
+        public CategoryDto build(){
+            return new CategoryDto(id, name, details, pricePerDay, listOfCarsDto);
+        }
     }
+
+    public long getId() { return id; }
 
     public String getName() {
         return name;

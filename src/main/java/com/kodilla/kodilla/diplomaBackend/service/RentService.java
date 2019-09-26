@@ -51,6 +51,13 @@ public class RentService {
 
     public Rent applyPenalty(Penalty penalty){
         penalty.getRent().getToBePaid().add(penalty.getToBePaid());
+        penalty.getRent().getListOfPenalties().add(penalty);
+        return rentRepository.save(penalty.getRent());
+    }
+
+    public Rent recallPenalty(Penalty penalty){
+        penalty.getRent().getToBePaid().subtract(penalty.getToBePaid());
+        penalty.getRent().getListOfPenalties().remove(penalty);
         return rentRepository.save(penalty.getRent());
     }
 

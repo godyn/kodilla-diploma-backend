@@ -24,4 +24,9 @@ public class PenaltyController {
     public void declarePenalty(@RequestBody PenaltyDto penaltyDto){
         penaltyService.chargePenalty(penaltyMapper.mapToPenalty(penaltyDto));
     }
+
+    @DeleteMapping(value ="/penalty/{id}")
+    public void deletePenalty(@PathVariable("id") long id){
+        penaltyService.cancelPenalty(id);
+    }
 }

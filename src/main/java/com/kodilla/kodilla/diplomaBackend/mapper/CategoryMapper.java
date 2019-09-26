@@ -20,10 +20,12 @@ public class CategoryMapper{
     }
 
     public CategoryDto mapToCategoryDto(Category category){
-        return new CategoryDto(category.getId(),
-                category.getName(),
-                category.getDetails(),
-                category.getPricePerDay(),
-                carMapper.mapToCarDtoList(category.getListOfCars()));
+        return new CategoryDto.CategoryDtoBuilder()
+                .id(category.getId())
+                .name(category.getName())
+                .details(category.getDetails())
+                .pricePerDay(category.getPricePerDay())
+                .listOfCarsDto(carMapper.mapToCarDtoList(category.getListOfCars()))
+                .build();
     }
 }
