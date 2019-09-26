@@ -1,4 +1,4 @@
-package com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain;
+package com.kodilla.kodilla.diplomaBackend.WeatherForecast.domain.current;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -6,19 +6,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherMetrics {
 
-    @JsonProperty("list.main.temp")
+    @JsonProperty("temp")
     private float temp;
 
-    @JsonProperty("list.main.pressure")
+    @JsonProperty("pressure")
     private float pressure;
 
-    @JsonProperty("list.main.humidity")
+    @JsonProperty("humidity")
     private float humidity;
 
     public WeatherMetrics(float temp, float pressure, float humidity) {
         this.temp = temp;
         this.pressure = pressure;
         this.humidity = humidity;
+    }
+
+    public WeatherMetrics() {
     }
 
     public float getTemp() {
