@@ -8,7 +8,7 @@ public class PenaltyDto {
     private PenaltyReason reason;
     private String details;
     private BigDecimal toBePaid;
-    private RentDto rentDto;
+    private long rentId;
 
     public static class PenaltyDtoBuilder{
 
@@ -16,7 +16,7 @@ public class PenaltyDto {
         private PenaltyReason reason;
         private String details;
         private BigDecimal toBePaid;
-        private RentDto rentDto;
+        private long rentId;
 
         public PenaltyDtoBuilder id(long id){
             this.id=id;
@@ -38,22 +38,22 @@ public class PenaltyDto {
             return this;
         }
 
-        public PenaltyDtoBuilder rentDto(RentDto rentDto){
-            this.rentDto=rentDto;
+        public PenaltyDtoBuilder rentId(long rentId){
+            this.rentId=rentId;
             return this;
         }
 
         public PenaltyDto build(){
-            return new PenaltyDto(id, reason, details, toBePaid, rentDto);
+            return new PenaltyDto(id, reason, details, toBePaid, rentId);
         }
     }
 
-    private PenaltyDto(long id, PenaltyReason reason, String details, BigDecimal toBePaid, RentDto rentDto) {
+    private PenaltyDto(long id, PenaltyReason reason, String details, BigDecimal toBePaid, long rentId) {
         this.id = id;
         this.reason = reason;
         this.details = details;
         this.toBePaid = toBePaid;
-        this.rentDto = rentDto;
+        this.rentId = rentId;
     }
 
     public PenaltyDto() {
@@ -75,7 +75,7 @@ public class PenaltyDto {
         return toBePaid;
     }
 
-    public RentDto getRentDto() {
-        return rentDto;
+    public long getRentId() {
+        return rentId;
     }
 }

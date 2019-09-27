@@ -50,4 +50,8 @@ public class CarService {
         logHistoryService.saveLog(userService.getAdmin(), "Car data update: " + car.getModel() + " (" + car.getId() + ")");
         return carRepository.save(car);
     }
+
+    public Car findCar(long id) throws NoSuchElementException{
+        return carRepository.findById(id).orElseThrow(NoSuchElementException::new);
+    }
 }

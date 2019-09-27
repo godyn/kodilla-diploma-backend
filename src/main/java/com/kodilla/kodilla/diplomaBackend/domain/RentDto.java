@@ -8,8 +8,8 @@ import java.util.List;
 public class RentDto {
 
     private long id;
-    private UserDto user;
-    private CarDto carRented;
+    private long userId;
+    private long carRentedId;
     private LocalDate startDay;
     private LocalDate endDay;
     private long fuelLevel;
@@ -21,8 +21,8 @@ public class RentDto {
 
     public static class RentDtoBuilder{
         private long id;
-        private UserDto user;
-        private CarDto carRented;
+        private long userId;
+        private long carRentedId;
         private LocalDate startDay;
         private LocalDate endDay;
         private long fuelLevel;
@@ -37,13 +37,13 @@ public class RentDto {
             return this;
         }
 
-        public RentDtoBuilder user(UserDto user){
-            this.user=user;
+        public RentDtoBuilder userId(long userId){
+            this.userId=userId;
             return this;
         }
 
-        public RentDtoBuilder carRented(CarDto carRented){
-            this.carRented=carRented;
+        public RentDtoBuilder carRentedId(long carRentedId){
+            this.carRentedId=carRentedId;
             return this;
         }
 
@@ -93,16 +93,16 @@ public class RentDto {
         }
 
         public RentDto build(){
-            return new RentDto(id, user, carRented, startDay, endDay, fuelLevel, withInsurance, withExtraCarTrunk, listOfPenalties, toBePaid, status);
+            return new RentDto(id, userId, carRentedId, startDay, endDay, fuelLevel, withInsurance, withExtraCarTrunk, listOfPenalties, toBePaid, status);
         }
 
     }
 
 
-    private RentDto(long id, UserDto user, CarDto carRented, LocalDate startDay, LocalDate endDay, long fuelLevel, boolean withInsurance, boolean withExtraCarTrunk, List<Penalty> listOfPenalties, BigDecimal toBePaid, RentStatus status) {
+    private RentDto(long id, long userId, long carRentedId, LocalDate startDay, LocalDate endDay, long fuelLevel, boolean withInsurance, boolean withExtraCarTrunk, List<Penalty> listOfPenalties, BigDecimal toBePaid, RentStatus status) {
         this.id = id;
-        this.user = user;
-        this.carRented = carRented;
+        this.userId = userId;
+        this.carRentedId = carRentedId;
         this.startDay = startDay;
         this.endDay = endDay;
         this.fuelLevel = fuelLevel;
@@ -120,12 +120,12 @@ public class RentDto {
         return id;
     }
 
-    public UserDto getUser() {
-        return user;
+    public long getUserId() {
+        return userId;
     }
 
-    public CarDto getCarRented() {
-        return carRented;
+    public long getCarRentedId() {
+        return carRentedId;
     }
 
     public LocalDate getStartDay() {

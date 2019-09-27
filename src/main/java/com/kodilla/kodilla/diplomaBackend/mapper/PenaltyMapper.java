@@ -2,6 +2,7 @@ package com.kodilla.kodilla.diplomaBackend.mapper;
 
 import com.kodilla.kodilla.diplomaBackend.domain.Penalty;
 import com.kodilla.kodilla.diplomaBackend.domain.PenaltyDto;
+import com.kodilla.kodilla.diplomaBackend.service.RentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,13 +12,16 @@ public class PenaltyMapper {
     @Autowired
     RentMapper rentMapper;
 
+    @Autowired
+    RentService rentService;
+
     public PenaltyDto mapToPenaltyDto(Penalty penalty){
         return new PenaltyDto.PenaltyDtoBuilder()
                 .id(penalty.getId())
                 .reason(penalty.getReason())
                 .details(penalty.getDetails())
                 .toBePaid(penalty.getToBePaid())
-                .rentDto(rentMapper.mapToRentDto(penalty.getRent()))
+                .rentId(penalty.getRent().getId())
                 .build();
     }
 
@@ -26,6 +30,6 @@ public class PenaltyMapper {
                 penaltyDto.getReason(),
                 penaltyDto.getDetails(),
                 penaltyDto.getToBePaid(),
-                rentMapper.mapToRent(penaltyDto.getRentDto()));
+                rentService.findRent(penaltyDto.getRentId()));
     }
 }

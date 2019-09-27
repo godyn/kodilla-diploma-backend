@@ -15,10 +15,13 @@ public interface CategoryRepository extends CrudRepository<Category, Long> {
 
     Optional<Category> findByName(String name);
 
+    Optional<Category> findById(long id);
+
     List<Category> findAll();
 
     Category save(Category category);
 
     void deleteById(long id);
+
 
 }

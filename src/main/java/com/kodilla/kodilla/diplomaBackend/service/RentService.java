@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class RentService {
@@ -29,7 +30,6 @@ public class RentService {
         return rentRepository.save(rent);
     }
 
-    //ADMIN ONLY
     public Rent confirmRent(Rent rent){
         rent.setStatus(RentStatus.RENTED);
         logHistoryService.saveLog(rent.getUser(), "Renting car (" + rent.getCarRented().getId() + ")");
@@ -42,7 +42,6 @@ public class RentService {
         return rentRepository.save(rent);
     }
 
-    //ADMIN ONLY
     public Rent confirmReturn(Rent rent){
         rent.setStatus(RentStatus.FINISHED);
         logHistoryService.saveLog(rent.getUser(), "Car (" + rent.getCarRented().getId() + ") return");
@@ -86,6 +85,10 @@ public class RentService {
         rent.setToBePaid(pricePerDay.multiply(durationOfRent));
         logHistoryService.saveLog(rent.getUser(), "Price to be paid has been updated. Rent id: " + rent.getId());
         rentRepository.save(rent);
+    }
+
+    public Rent findRent(long id) throws NoSuchElementException{
+        return rentRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
 
 }

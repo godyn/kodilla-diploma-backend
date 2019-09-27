@@ -5,6 +5,7 @@ import com.kodilla.kodilla.diplomaBackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -15,6 +16,10 @@ public class UserService{
 
     public User getAdmin(){
         return userRepository.findByLogin("ADMIN").orElseGet(User::new);
+    }
+
+    public User findUser(long id) throws NoSuchElementException{
+        return userRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
 /* --->>> TO DO AS A NEXT STEP OF DEVELOPMENT<<<<----
 

@@ -2,6 +2,8 @@ package com.kodilla.kodilla.diplomaBackend.mapper;
 
 import com.kodilla.kodilla.diplomaBackend.domain.Rent;
 import com.kodilla.kodilla.diplomaBackend.domain.RentDto;
+import com.kodilla.kodilla.diplomaBackend.service.CarService;
+import com.kodilla.kodilla.diplomaBackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,15 +14,15 @@ import java.util.stream.Collectors;
 public class RentMapper {
 
     @Autowired
-    UserMapper userMapper;
+    UserService userService;
 
     @Autowired
-    CarMapper carMapper;
+    CarService carService;
 
     public Rent mapToRent(RentDto rentDto){
         return new Rent(rentDto.getId(),
-                userMapper.mapToUser(rentDto.getUser()),
-                carMapper.mapToCar(rentDto.getCarRented()),
+                userService.findUser(rentDto.getUserId()),
+                carService.findCar(rentDto.getCarRentedId()),
                 rentDto.getStartDay(),
                 rentDto.getEndDay(),
                 rentDto.getFuelLevel(),
@@ -34,8 +36,8 @@ public class RentMapper {
     public RentDto mapToRentDto(Rent rent){
         return new RentDto.RentDtoBuilder()
                 .id(rent.getId())
-                .user(userMapper.mapToUserDto(rent.getUser()))
-                .carRented(carMapper.mapToCarDto(rent.getCarRented()))
+                .userId(rent.getUser().getId())
+                .carRentedId(rent.getCarRented().getId())
                 .startDay(rent.getStartDay())
                 .endDay(rent.getEndDay())
                 .fuelLevel(rent.getFuelLevel())
@@ -45,7 +47,6 @@ public class RentMapper {
                 .toBePaid(rent.getToBePaid())
                 .status(rent.getStatus())
                 .build();
-
     }
 
     public List<RentDto> mapToRentDtoList(final List<Rent> rentsList){
@@ -59,5 +60,4 @@ public class RentMapper {
                 .map(rentDto -> mapToRent(rentDto))
                 .collect(Collectors.toList());
     }
-
 }

@@ -10,7 +10,7 @@ import java.util.List;
         name="Car.searchCarInDateRange",
         query = "SELECT * FROM CARS C WHERE " +
                 "ID NOT IN " +
-                    "(SELECET R.CAR_ID FROM RENTS R WHERE " +
+                    "(SELECT R.CAR_ID FROM RENTS R WHERE " +
                         "(R.START_DAY BETWEEN :REQUESTED_START AND :REQUESTED_END) OR " +
                         "(R.END_DAY BETWEEN :REQUESTED_START AND :REQUESTED_END) OR " +
                         "(R.START_DAY < :REQUESTED_START AND R.END_DAY > :REQUESTED_END ))" +

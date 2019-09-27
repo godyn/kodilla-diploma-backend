@@ -2,6 +2,8 @@ package com.kodilla.kodilla.diplomaBackend.mapper;
 
 import com.kodilla.kodilla.diplomaBackend.domain.Car;
 import com.kodilla.kodilla.diplomaBackend.domain.CarDto;
+import com.kodilla.kodilla.diplomaBackend.service.CategoryService;
+import com.kodilla.kodilla.diplomaBackend.service.RentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +19,9 @@ public class CarMapper {
     @Autowired
     CategoryMapper categoryMapper;
 
+    @Autowired
+    CategoryService categoryService;
+
     public CarDto mapToCarDto(Car car){
         return new CarDto.CarDtoBuilder()
                 .id(car.getId())
@@ -25,7 +30,7 @@ public class CarMapper {
                 .vehicleMileage(car.getVehicleMileage())
                 .doorQuantity(car.getDoorQuantity())
                 .seatsQuantity(car.getSeatsQuantity())
-                .categoryDto(categoryMapper.mapToCategoryDto(car.getCategory()))
+                .categoryId(car.getCategory().getId())
                 .listOfRents(rentMapper.mapToRentDtoList(car.getListOfRents()))
                 .build();
     }
@@ -33,7 +38,7 @@ public class CarMapper {
     public Car mapToCar(CarDto carDto){
         return new Car(carDto.getId(), carDto.getModel(), carDto.getProductionYear(),
                 carDto.getVehicleMileage(), carDto.getDoorQuantity(), carDto.getSeatsQuantity(),
-                categoryMapper.mapToCategory(carDto.getCategoryDto()), rentMapper.mapToRentList(carDto.getListOfRents()));
+                categoryService.findCategory(carDto.getCategoryId()), rentMapper.mapToRentList(carDto.getListOfRents()));
     }
 
     public List<CarDto> mapToCarDtoList(List<Car> cars){

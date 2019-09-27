@@ -43,5 +43,9 @@ public class CategoryService {
         categoryRepository.deleteById(id);
     }
 
+    public Category findCategory(long id){
+        return categoryRepository.findById(id).orElseThrow(NoSuchElementException::new);
+    }
+
 
 }

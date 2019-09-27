@@ -1,5 +1,7 @@
 package com.kodilla.kodilla.diplomaBackend.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -11,7 +13,8 @@ public class CarDto {
     private BigDecimal vehicleMileage;
     private int doorQuantity;
     private int seatsQuantity;
-    private CategoryDto categoryDto;
+    private long categoryId;
+    @JsonIgnore
     List<RentDto> listOfRents;
 
     public static class CarDtoBuilder{
@@ -22,7 +25,7 @@ public class CarDto {
         private BigDecimal vehicleMileage;
         private int doorQuantity;
         private int seatsQuantity;
-        private CategoryDto categoryDto;
+        private long categoryId;
         List<RentDto> listOfRents;
 
         public CarDtoBuilder id(long id){
@@ -55,8 +58,8 @@ public class CarDto {
             return this;
         }
 
-        public CarDtoBuilder categoryDto(CategoryDto categoryDto){
-            this.categoryDto=categoryDto;
+        public CarDtoBuilder categoryId(long categoryId){
+            this.categoryId=categoryId;
             return this;
         }
 
@@ -66,18 +69,18 @@ public class CarDto {
         }
 
         public CarDto build(){
-            return new CarDto(id, model, productionYear, vehicleMileage, doorQuantity, seatsQuantity, categoryDto, listOfRents);
+            return new CarDto(id, model, productionYear, vehicleMileage, doorQuantity, seatsQuantity, categoryId, listOfRents);
         }
     }
 
-    private CarDto(long id, String model, String productionYear, BigDecimal vehicleMileage, int doorQuantity, int seatsQuantity, CategoryDto categoryDto, List<RentDto> listOfRents) {
+    private CarDto(long id, String model, String productionYear, BigDecimal vehicleMileage, int doorQuantity, int seatsQuantity, long categoryId, List<RentDto> listOfRents) {
         this.id = id;
         this.model = model;
         this.productionYear = productionYear;
         this.vehicleMileage = vehicleMileage;
         this.doorQuantity = doorQuantity;
         this.seatsQuantity = seatsQuantity;
-        this.categoryDto = categoryDto;
+        this.categoryId = categoryId;
         this.listOfRents = listOfRents;
     }
 
@@ -108,8 +111,8 @@ public class CarDto {
         return seatsQuantity;
     }
 
-    public CategoryDto getCategoryDto() {
-        return categoryDto;
+    public long getCategoryId() {
+        return categoryId;
     }
 
     public List<RentDto> getListOfRents() {

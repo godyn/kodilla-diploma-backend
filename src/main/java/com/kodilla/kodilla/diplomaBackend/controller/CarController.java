@@ -5,6 +5,7 @@ import com.kodilla.kodilla.diplomaBackend.mapper.CarMapper;
 import com.kodilla.kodilla.diplomaBackend.service.CarService;
 import com.kodilla.kodilla.diplomaBackend.service.LogHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -27,7 +28,7 @@ public class CarController {
     LogHistoryService logHistoryService;
 
     @GetMapping(value="/cars")
-    public List<CarDto> searchCars(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate, @RequestParam String category){
+    public List<CarDto> searchCars(@RequestParam(name = "start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @RequestParam(name = "end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate endDate, @RequestParam String category){
         return carMapper.mapToCarDtoList(carService.searchCar(startDate, endDate, category));
     }
 
