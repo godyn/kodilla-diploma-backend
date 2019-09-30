@@ -33,7 +33,7 @@ public class CarService {
         }
         catch(NoSuchElementException e){
             return new ArrayList<>();
-        }                                   /////---------> SPRAWDZ
+        }
     }
 
     public Car addCar(Car car){
@@ -51,7 +51,7 @@ public class CarService {
         return carRepository.save(car);
     }
 
-    public Car findCar(long id) throws NoSuchElementException{
-        return carRepository.findById(id).orElseThrow(NoSuchElementException::new);
+    public Car findCar(long id){ return carRepository.findById(id).orElseThrow(NoSuchElementException::new);
+
     }
 }

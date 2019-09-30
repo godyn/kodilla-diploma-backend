@@ -15,10 +15,10 @@ public class UserService{
     private UserRepository userRepository;
 
     public User getAdmin(){
-        return userRepository.findByLogin("ADMIN").orElseGet(User::new);
+        return userRepository.findByLogin("admin").orElseGet(User::new);
     }
 
-    public User findUser(long id) throws NoSuchElementException{
+    public User findUser(long id){
         return userRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
 /* --->>> TO DO AS A NEXT STEP OF DEVELOPMENT<<<<----

@@ -20,7 +20,7 @@ public class CategoryService {
     @Autowired
     UserService userService;
 
-    public Category getCategory(String name) throws NoSuchElementException {
+    public Category getCategory(String name){
         return categoryRepository.findByName(name).orElseThrow(NoSuchElementException::new);
     }
 

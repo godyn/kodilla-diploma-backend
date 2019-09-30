@@ -87,7 +87,7 @@ public class RentService {
         rentRepository.save(rent);
     }
 
-    public Rent findRent(long id) throws NoSuchElementException{
+    public Rent findRent(long id){
         return rentRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
 

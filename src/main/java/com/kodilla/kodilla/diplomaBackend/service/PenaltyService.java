@@ -27,7 +27,7 @@ public class PenaltyService {
         return penaltyRepository.save(penalty);
     }
 
-    public void cancelPenalty(long id) throws NoSuchElementException{
+    public void cancelPenalty(long id){
         Penalty penalty = penaltyRepository.findById(id).orElseThrow(NoSuchElementException::new);
         rentService.recallPenalty(penalty);
         logHistoryService.saveLog(penalty.getRent().getUser(), "Penalty cancellation - id: " + id);

@@ -38,9 +38,11 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/v1/rent/cancel").hasRole("USER")
                 .antMatchers("/v1/rent/history").hasRole("USER")
                 .antMatchers("/v1/cars").hasRole("USER")
-                .antMatchers("/v1/categories").hasRole("USER").antMatchers("/v1/weather/**").hasRole("USER")
+                .antMatchers("/v1/categories").hasRole("USER")
+                .antMatchers("/v1/weather/**").hasRole("USER")
                 .antMatchers("/v1/**").hasRole("ADMIN")
-                .antMatchers("/v1/**").authenticated() //.antMatchers("/v1/user/login").permitAll() ---> TO BE DONE IN THE FUTURE
+                .anyRequest().authenticated()
+                //.antMatchers("/v1/user/login").permitAll() ---> TO BE DONE IN THE FUTURE
                 .and()
                 .csrf().disable()
                 .formLogin().disable();
