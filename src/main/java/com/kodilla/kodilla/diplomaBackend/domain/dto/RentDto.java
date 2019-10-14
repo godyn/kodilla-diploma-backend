@@ -1,4 +1,7 @@
-package com.kodilla.kodilla.diplomaBackend.domain;
+package com.kodilla.kodilla.diplomaBackend.domain.dto;
+
+import com.kodilla.kodilla.diplomaBackend.domain.Penalty;
+import com.kodilla.kodilla.diplomaBackend.domain.enums.RentStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -17,7 +20,7 @@ public class RentDto {
     private boolean	withExtraCarTrunk;
     private List<Penalty> listOfPenalties;
     private BigDecimal toBePaid;
-    private RentStatus	status;
+    private RentStatus status;
 
     public static class RentDtoBuilder{
         private long id;

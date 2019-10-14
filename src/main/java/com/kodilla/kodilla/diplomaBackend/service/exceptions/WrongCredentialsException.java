@@ -1,4 +1,4 @@
-package com.kodilla.kodilla.diplomaBackend.service;
+package com.kodilla.kodilla.diplomaBackend.service.exceptions;
 
 public class WrongCredentialsException extends Exception {
 
@@ -6,3 +6,4 @@ public class WrongCredentialsException extends Exception {
         super(message);
     }
 }
+

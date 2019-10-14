@@ -21,7 +21,7 @@ public class ReceivableScheduler {
     @Scheduled(cron = "0 0 6 * * *")
     public void accountReceivables(){
         rentRepository.findAll().stream()
-                .filter(rent -> rent.getStatus().equals("BOOKED"))
+                .filter(rent -> ("BOOKED").equals(rent.getStatus()))
                 .filter(rent -> rent.getToBePaid()==null)
                 .filter(rent -> ChronoUnit.DAYS.between(LocalDate.now(), rent.getStartDay())<3)
                 .forEach(rent -> rentService.accountFor(rent));

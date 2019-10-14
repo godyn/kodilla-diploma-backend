@@ -1,7 +1,7 @@
 package com.kodilla.kodilla.diplomaBackend.mapper;
 
 import com.kodilla.kodilla.diplomaBackend.domain.Rent;
-import com.kodilla.kodilla.diplomaBackend.domain.RentDto;
+import com.kodilla.kodilla.diplomaBackend.domain.dto.RentDto;
 import com.kodilla.kodilla.diplomaBackend.service.CarService;
 import com.kodilla.kodilla.diplomaBackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

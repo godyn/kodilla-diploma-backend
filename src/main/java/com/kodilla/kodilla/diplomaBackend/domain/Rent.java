@@ -1,7 +1,8 @@
 package com.kodilla.kodilla.diplomaBackend.domain;
 
+import com.kodilla.kodilla.diplomaBackend.domain.enums.RentStatus;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;

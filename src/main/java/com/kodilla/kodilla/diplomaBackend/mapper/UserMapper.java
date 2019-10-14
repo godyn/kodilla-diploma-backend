@@ -1,7 +1,7 @@
 package com.kodilla.kodilla.diplomaBackend.mapper;
 
 import com.kodilla.kodilla.diplomaBackend.domain.User;
-import com.kodilla.kodilla.diplomaBackend.domain.UserDto;
+import com.kodilla.kodilla.diplomaBackend.domain.dto.UserDto;
 import org.springframework.stereotype.Component;
 
 @Component

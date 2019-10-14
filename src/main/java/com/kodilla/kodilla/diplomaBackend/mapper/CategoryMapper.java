@@ -1,7 +1,7 @@
 package com.kodilla.kodilla.diplomaBackend.mapper;
 
 import com.kodilla.kodilla.diplomaBackend.domain.Category;
-import com.kodilla.kodilla.diplomaBackend.domain.CategoryDto;
+import com.kodilla.kodilla.diplomaBackend.domain.dto.CategoryDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

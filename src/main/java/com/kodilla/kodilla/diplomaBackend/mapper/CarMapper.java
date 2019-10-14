@@ -1,9 +1,8 @@
 package com.kodilla.kodilla.diplomaBackend.mapper;
 
 import com.kodilla.kodilla.diplomaBackend.domain.Car;
-import com.kodilla.kodilla.diplomaBackend.domain.CarDto;
+import com.kodilla.kodilla.diplomaBackend.domain.dto.CarDto;
 import com.kodilla.kodilla.diplomaBackend.service.CategoryService;
-import com.kodilla.kodilla.diplomaBackend.service.RentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

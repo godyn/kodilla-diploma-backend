@@ -1,4 +1,4 @@
-package com.kodilla.kodilla.diplomaBackend.domain;
+package com.kodilla.kodilla.diplomaBackend.domain.dto;
 
 import java.math.BigDecimal;
 import java.util.List;

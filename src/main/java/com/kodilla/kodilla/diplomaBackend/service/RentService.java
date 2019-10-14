@@ -1,16 +1,12 @@
 package com.kodilla.kodilla.diplomaBackend.service;
 
 import com.kodilla.kodilla.diplomaBackend.domain.*;
-import com.kodilla.kodilla.diplomaBackend.repository.LogHistoryRepository;
+import com.kodilla.kodilla.diplomaBackend.domain.enums.RentStatus;
 import com.kodilla.kodilla.diplomaBackend.repository.RentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.NoSuchElementException;

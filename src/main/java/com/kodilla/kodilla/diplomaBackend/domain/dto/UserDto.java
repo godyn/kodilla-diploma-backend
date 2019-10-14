@@ -1,4 +1,6 @@
-package com.kodilla.kodilla.diplomaBackend.domain;
+package com.kodilla.kodilla.diplomaBackend.domain.dto;
+
+import com.kodilla.kodilla.diplomaBackend.domain.enums.UserRole;
 
 public class UserDto {
 

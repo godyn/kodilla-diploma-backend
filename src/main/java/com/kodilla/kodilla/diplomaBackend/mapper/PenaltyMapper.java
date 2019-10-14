@@ -1,7 +1,7 @@
 package com.kodilla.kodilla.diplomaBackend.mapper;
 
 import com.kodilla.kodilla.diplomaBackend.domain.Penalty;
-import com.kodilla.kodilla.diplomaBackend.domain.PenaltyDto;
+import com.kodilla.kodilla.diplomaBackend.domain.dto.PenaltyDto;
 import com.kodilla.kodilla.diplomaBackend.service.RentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

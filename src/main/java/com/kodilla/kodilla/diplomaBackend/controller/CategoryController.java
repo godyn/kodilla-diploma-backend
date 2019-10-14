@@ -1,7 +1,7 @@
 package com.kodilla.kodilla.diplomaBackend.controller;
 
 import com.kodilla.kodilla.diplomaBackend.domain.Category;
-import com.kodilla.kodilla.diplomaBackend.domain.CategoryDto;
+import com.kodilla.kodilla.diplomaBackend.domain.dto.CategoryDto;
 import com.kodilla.kodilla.diplomaBackend.mapper.CategoryMapper;
 import com.kodilla.kodilla.diplomaBackend.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;

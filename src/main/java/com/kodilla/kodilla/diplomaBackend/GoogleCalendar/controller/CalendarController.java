@@ -4,7 +4,7 @@ package com.kodilla.kodilla.diplomaBackend.GoogleCalendar.controller;
 import com.kodilla.kodilla.diplomaBackend.GoogleCalendar.domain.EventDto;
 import com.kodilla.kodilla.diplomaBackend.GoogleCalendar.mapper.EventMapper;
 import com.kodilla.kodilla.diplomaBackend.GoogleCalendar.service.CalendarService;
-import com.kodilla.kodilla.diplomaBackend.domain.RentDto;
+import com.kodilla.kodilla.diplomaBackend.domain.dto.RentDto;
 import com.kodilla.kodilla.diplomaBackend.mapper.RentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

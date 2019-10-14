@@ -1,20 +1,6 @@
 package com.kodilla.kodilla.diplomaBackend.controller;
 
-import com.kodilla.kodilla.diplomaBackend.domain.UserDto;
-import com.kodilla.kodilla.diplomaBackend.mapper.UserMapper;
-import com.kodilla.kodilla.diplomaBackend.service.EmailExistsException;
-import com.kodilla.kodilla.diplomaBackend.service.LogHistoryService;
-import com.kodilla.kodilla.diplomaBackend.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionContext;
-
-import java.util.Enumeration;
-
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @CrossOrigin("*")
 @RestController

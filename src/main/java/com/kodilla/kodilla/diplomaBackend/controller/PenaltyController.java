@@ -1,6 +1,6 @@
 package com.kodilla.kodilla.diplomaBackend.controller;
 
-import com.kodilla.kodilla.diplomaBackend.domain.PenaltyDto;
+import com.kodilla.kodilla.diplomaBackend.domain.dto.PenaltyDto;
 import com.kodilla.kodilla.diplomaBackend.mapper.PenaltyMapper;
 import com.kodilla.kodilla.diplomaBackend.service.PenaltyService;
 import org.springframework.beans.factory.annotation.Autowired;

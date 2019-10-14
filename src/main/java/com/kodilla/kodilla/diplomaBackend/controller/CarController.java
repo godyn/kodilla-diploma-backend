@@ -1,6 +1,6 @@
 package com.kodilla.kodilla.diplomaBackend.controller;
 
-import com.kodilla.kodilla.diplomaBackend.domain.CarDto;
+import com.kodilla.kodilla.diplomaBackend.domain.dto.CarDto;
 import com.kodilla.kodilla.diplomaBackend.mapper.CarMapper;
 import com.kodilla.kodilla.diplomaBackend.service.CarService;
 import com.kodilla.kodilla.diplomaBackend.service.LogHistoryService;

@@ -1,13 +1,11 @@
 package com.kodilla.kodilla.diplomaBackend.controller;
 
-import com.kodilla.kodilla.diplomaBackend.domain.Rent;
-import com.kodilla.kodilla.diplomaBackend.domain.RentDto;
+import com.kodilla.kodilla.diplomaBackend.domain.dto.RentDto;
 import com.kodilla.kodilla.diplomaBackend.domain.User;
 import com.kodilla.kodilla.diplomaBackend.mapper.RentMapper;
 import com.kodilla.kodilla.diplomaBackend.service.RentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import sun.util.calendar.LocalGregorianCalendar;
 
 import java.util.List;
 

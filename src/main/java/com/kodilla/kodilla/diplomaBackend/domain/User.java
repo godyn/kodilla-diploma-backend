@@ -1,7 +1,8 @@
 package com.kodilla.kodilla.diplomaBackend.domain;
 
+import com.kodilla.kodilla.diplomaBackend.domain.enums.UserRole;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
