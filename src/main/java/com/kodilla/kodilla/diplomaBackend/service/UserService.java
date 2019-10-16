@@ -14,8 +14,10 @@ public class UserService{
     @Autowired
     private UserRepository userRepository;
 
+    private static final String ADMIN_LOGIN = "admin";
+
     public User getAdmin(){
-        return userRepository.findByLogin("admin").orElseGet(User::new);
+        return userRepository.findByLogin(ADMIN_LOGIN).orElseGet(User::new);
     }
 
     public User findUser(long id){

@@ -15,8 +15,6 @@ public interface RentRepository extends CrudRepository<Rent, Long> {
 
     Rent save(Rent rent);
 
-    //List<Rent> findByUser(long id);
-
     List<Rent> getRentsByUserId(long id);
 
     List<Rent> findAll();

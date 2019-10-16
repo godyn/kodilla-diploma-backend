@@ -15,12 +15,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
 
+    private static final String ADMIN_ROLE = "ADMIN";
+    private static final String USER_ROLE = "USER";
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("admin").password(encoder().encode("adminPass")).roles("ADMIN", "USER")
+                .withUser("admin").password(encoder().encode("adminPass")).roles(ADMIN_ROLE, USER_ROLE)
                 .and()
-                .withUser("user").password(encoder().encode("userPass")).roles("USER");
+                .withUser("user").password(encoder().encode("userPass")).roles(USER_ROLE);
     }
 
     @Bean
@@ -34,13 +37,13 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/v1/rent/book").hasRole("USER")
-                .antMatchers("/v1/rent/cancel").hasRole("USER")
-                .antMatchers("/v1/rent/history").hasRole("USER")
-                .antMatchers("/v1/cars").hasRole("USER")
-                .antMatchers("/v1/categories").hasRole("USER")
-                .antMatchers("/v1/weather/**").hasRole("USER")
-                .antMatchers("/v1/**").hasRole("ADMIN")
+                .antMatchers("/v1/rent/book").hasRole(USER_ROLE)
+                .antMatchers("/v1/rent/cancel").hasRole(USER_ROLE)
+                .antMatchers("/v1/rent/history").hasRole(USER_ROLE)
+                .antMatchers("/v1/cars").hasRole(USER_ROLE)
+                .antMatchers("/v1/categories").hasRole(USER_ROLE)
+                .antMatchers("/v1/weather/**").hasRole(USER_ROLE)
+                .antMatchers("/v1/**").hasRole(ADMIN_ROLE)
                 .anyRequest().authenticated()
                 //.antMatchers("/v1/user/login").permitAll() ---> TO BE DONE IN THE FUTURE
                 .and()

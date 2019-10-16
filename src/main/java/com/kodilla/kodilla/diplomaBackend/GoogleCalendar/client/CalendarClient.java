@@ -35,6 +35,9 @@ public class CalendarClient {
     private static final List<String> SCOPES = Collections.singletonList(CalendarScopes.CALENDAR);
     private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
+    private static final String TIME_ZONE = "Europe/Warsaw";
+    private static final int PORT_NUMBER = 8888;
+    private static final String ACCESS_TYPE = "offline";
 
     private static final String CALENDAR_ID = "4ueb78lf25kffagn6h89q98e9g@group.calendar.google.com";
 
@@ -57,13 +60,13 @@ public class CalendarClient {
         DateTime startDate = new DateTime(rent.getStartDay().toString());
         EventDateTime start = new EventDateTime()
                 .setDate(startDate)
-                .setTimeZone("Europe/Warsaw");
+                .setTimeZone(TIME_ZONE);
         event.setStart(start);
 
         DateTime endDateTime = new DateTime(rent.getEndDay().toString());
         EventDateTime end = new EventDateTime()
                 .setDate(endDateTime)
-                .setTimeZone("Europe/Warsaw");
+                .setTimeZone(TIME_ZONE);
         event.setEnd(end);
 
         try {
@@ -80,7 +83,6 @@ public class CalendarClient {
 
     public List<Event> list10nextEvents(){
         DateTime now = new DateTime(System.currentTimeMillis());
-        //DateTime now = new Date(System.currentTimeMillis());
         try {
             Calendar service = buildAuthorizedClientService();
             Events events = service.events().list(CALENDAR_ID)
@@ -104,7 +106,7 @@ public class CalendarClient {
             return items;
         }
         catch(Exception e){
-            System.out.println("Creating Service exception messeage: " + e.getMessage() +", exception cause: "+ e.getCause());
+            System.out.println("Creating Service exception message: " + e.getMessage() +", exception cause: "+ e.getCause());
             return null;
         }
     }
@@ -112,10 +114,9 @@ public class CalendarClient {
     public void deleteRentEvent(String eventId){
         try {
             Calendar service = buildAuthorizedClientService();
-            //Calendar.Events.Delete event = service.events().delete(CALENDAR_ID, eventId);
             service.events().delete(CALENDAR_ID, eventId);
         }catch(Exception e){
-            System.out.println("Creating Service exception messeage: " + e.getMessage() +", exception cause: "+ e.getCause());
+            System.out.println("Creating Service exception message: " + e.getMessage() +", exception cause: "+ e.getCause());
         }
     }
 
@@ -131,9 +132,9 @@ public class CalendarClient {
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
                 HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
                 .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
-                .setAccessType("offline")
+                .setAccessType(ACCESS_TYPE)
                 .build();
-        LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
+        LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(PORT_NUMBER).build();
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
 
