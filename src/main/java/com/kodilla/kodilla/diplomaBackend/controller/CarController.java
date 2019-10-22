@@ -28,7 +28,7 @@ public class CarController {
     LogHistoryService logHistoryService;
 
     @GetMapping(value="/cars")
-    public List<CarDto> searchCars(@RequestParam(name = "start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @RequestParam(name = "end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate endDate, @RequestParam String category){
+    public List<CarDto> searchCars(@RequestParam(name = "start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @RequestParam(name = "end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate endDate, @RequestParam(name = "category") String category){
         return carMapper.mapToCarDtoList(carService.searchCar(startDate, endDate, category));
     }
 

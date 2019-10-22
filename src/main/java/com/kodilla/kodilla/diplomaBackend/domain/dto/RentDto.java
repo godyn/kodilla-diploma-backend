@@ -18,7 +18,7 @@ public class RentDto {
     private long fuelLevel;
     private boolean	withInsurance;
     private boolean	withExtraCarTrunk;
-    private List<Penalty> listOfPenalties;
+    private List<Penalty> listOfPenalties = new ArrayList<>();
     private BigDecimal toBePaid;
     private RentStatus status;
 
@@ -31,7 +31,7 @@ public class RentDto {
         private long fuelLevel;
         private boolean	withInsurance;
         private boolean	withExtraCarTrunk;
-        private List<Penalty> listOfPenalties;
+        private List<Penalty> listOfPenalties = new ArrayList<>();
         private BigDecimal toBePaid;
         private RentStatus	status;
 
